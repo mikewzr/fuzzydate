@@ -194,12 +194,12 @@ impl Date {
                             let (num3, t) = Num::parse(&l[tokens..])?;
                             tokens += t;
 
-                            // If delim is dot use DMY, otherwise MDY
-                            if delim == &Lexeme::Dot {
-                                return Some((Self::MonthNumDayYear(num2, num1, num3), tokens));
-                            }
-                            else {
-                                return Some((Self::MonthNumDayYear(num1, num2, num3), tokens));
+                            // If delim is slash use MDY, if dot use DMY and if dahs use YMD
+                            match delim {
+                                &Lexeme::Slash => return Some((Self::MonthNumDayYear(num1, num2, num3), tokens)),
+                                &Lexeme::Dot => return Some((Self::MonthNumDayYear(num2, num1, num3), tokens)),
+                                &Lexeme::Dash => return Some((Self::MonthNumDayYear(num2, num3, num1), tokens)),
+                                _ => return None,
                             }
                         } else {
                             // If delim is dot use DMY, otherwise MDY
