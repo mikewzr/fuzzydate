@@ -1286,29 +1286,29 @@ fn test_slash_separated_invalid_month() {
 #[test]
 fn test_dash_separated_date() {
     let lexemes = vec![
-        Lexeme::Num(5),
+        Lexeme::Num(2023),
         Lexeme::Dash,
         Lexeme::Num(12),
         Lexeme::Dash,
-        Lexeme::Num(2023),
+        Lexeme::Num(5),
     ];
     let (date, t) = DateTime::parse(lexemes.as_slice()).unwrap();
     let date = date.to_chrono(Local::now().naive_local().time()).unwrap();
 
     assert_eq!(t, 5);
     assert_eq!(date.year(), 2023);
-    assert_eq!(date.month(), 5);
-    assert_eq!(date.day(), 12);
+    assert_eq!(date.month(), 12);
+    assert_eq!(date.day(), 5);
 }
 
 #[test]
 fn test_dash_separated_invalid_month() {
     let lexemes = vec![
+        Lexeme::Num(2023),
+        Lexeme::Dash,
         Lexeme::Num(13),
         Lexeme::Dash,
         Lexeme::Num(12),
-        Lexeme::Dash,
-        Lexeme::Num(2023),
     ];
     let (date, _) = DateTime::parse(lexemes.as_slice()).unwrap();
     let date = date.to_chrono(Local::now().naive_local().time());
