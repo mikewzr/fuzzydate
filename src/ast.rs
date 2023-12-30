@@ -1348,3 +1348,48 @@ fn test_dot_separated_date_invalid_month() {
 
     assert!(date.is_err());
 }
+
+// #[test]
+// fn test_dot_separated_date_two_numbers() {
+//     let lexemes = vec![
+//         Lexeme::Num(19),
+//         Lexeme::Dot,
+//         Lexeme::Num(12),
+//     ];
+//     let (date, t) = DateTime::parse(lexemes.as_slice()).unwrap();
+//     let date = date.to_chrono(Local::now().naive_local().time()).unwrap();
+
+//     assert_eq!(t, 4);
+//     assert_eq!(date.day(), 19);
+//     assert_eq!(date.month(), 12);
+// }
+
+// #[test]
+// fn test_slash_separated_date_two_numbers() {
+//     let lexemes = vec![
+//         Lexeme::Num(5),
+//         Lexeme::Slash,
+//         Lexeme::Num(12),
+//     ];
+//     let (date, t) = DateTime::parse(lexemes.as_slice()).unwrap();
+//     let date = date.to_chrono(Local::now().naive_local().time()).unwrap();
+
+//     assert_eq!(t, 3);
+//     assert_eq!(date.day(), 12);
+//     assert_eq!(date.month(), 5);
+// }
+
+// #[test]
+// fn test_dash_separated_date_two_numbers() {
+//     let lexemes = vec![
+//         Lexeme::Num(5),
+//         Lexeme::Dash,
+//         Lexeme::Num(12),
+//     ];
+//     let (date, t) = DateTime::parse(lexemes.as_slice()).unwrap();
+//     let date = date.to_chrono(Local::now().naive_local().time()).unwrap();
+
+//     assert_eq!(t, 3);
+//     assert_eq!(date.day(), 12);
+//     assert_eq!(date.month(), 5);
+// }
